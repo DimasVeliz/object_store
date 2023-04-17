@@ -1,8 +1,8 @@
 package com.boosting.code.object_store.service.impl;
 
-import com.boosting.code.object_store.dto.DocumentDto;
+import com.boosting.code.object_store.dto.FileInfoDto;
 import com.boosting.code.object_store.dto.ServiceInfo;
-import com.boosting.code.object_store.entity.Document;
+import com.boosting.code.object_store.entity.FileInfoEntity;
 import com.boosting.code.object_store.repository.IObjectStoreRepository;
 import com.boosting.code.object_store.service.IObjectStoreService;
 import org.springframework.stereotype.Service;
@@ -17,9 +17,9 @@ public class ObjectStoreService implements IObjectStoreService {
     }
 
     @Override
-    public ServiceInfo save(DocumentDto document) {
-        Document toSave = new Document(0,document.getUuid(), document.getMime(), document.getData());
-        Document response = objectStoreRepository.save(toSave);
+    public ServiceInfo save(FileInfoDto document) {
+        FileInfoEntity toSave = new FileInfoEntity(0,document.getUuid(), document.getMime(), document.getData());
+        FileInfoEntity response = objectStoreRepository.save(toSave);
         if(null==response){
             return new ServiceInfo(false,"failed to save document in object store");
         }
@@ -28,10 +28,10 @@ public class ObjectStoreService implements IObjectStoreService {
     }
 
     @Override
-    public DocumentDto get(String documentUUID) {
+    public FileInfoDto get(String documentUUID) {
 
-        Document document = objectStoreRepository.findByUuid(documentUUID);
+        FileInfoEntity document = objectStoreRepository.findByUuid(documentUUID);
         if(null==document) return null;
-        return new DocumentDto(document.getUuid(),document.getMime(),document.getData());
+        return new FileInfoDto(document.getUuid(),document.getMime(),document.getData());
     }
 }

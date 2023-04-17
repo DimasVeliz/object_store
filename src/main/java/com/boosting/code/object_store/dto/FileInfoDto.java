@@ -1,12 +1,12 @@
 package com.boosting.code.object_store.dto;
 
-public class DocumentDto {
+public class FileInfoDto {
 
     String uuid;
     String mime;
     byte [] data;
 
-    public DocumentDto(String uuid, String mime, byte[] data) {
+    public FileInfoDto(String uuid, String mime, byte[] data) {
         this.uuid = uuid;
         this.mime = mime;
         this.data = data;

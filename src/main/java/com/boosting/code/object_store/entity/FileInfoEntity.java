@@ -4,7 +4,7 @@ import jakarta.persistence.*;
 
 @Entity
 @Table(name="document")
-public class Document {
+public class FileInfoEntity {
 
 
     @Id
@@ -18,14 +18,14 @@ public class Document {
     @Column
     byte [] data;
 
-    public Document(int id,String uuid, String mime, byte[] data) {
+    public FileInfoEntity(int id, String uuid, String mime, byte[] data) {
         this.id = id;
         this.uuid = uuid;
         this.mime = mime;
         this.data = data;
     }
 
-    public Document() {
+    public FileInfoEntity() {
     }
 
     public int getId() {
