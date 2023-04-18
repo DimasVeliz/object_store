@@ -15,7 +15,7 @@ public class FileInfoEntity {
     private String uuid;
     @Column
     private String mime;
-    @Column
+    @Column(columnDefinition="MEDIUMBLOB")
     byte [] data;
 
     public FileInfoEntity(int id, String uuid, String mime, byte[] data) {
